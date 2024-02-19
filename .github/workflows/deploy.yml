@@ -1,0 +1,22 @@
+name: Deploy to server
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to Dev
+      uses: appleboy/ssh-action@master
+      with:
+        host: 103.171.45.77
+        username: cltadmin
+        password: "Singh@1989raj"
+        script: |
+         powershell.exe -Command "cd C:\inetpub\application1\app\; git checkout dev; git branch origin dev; git pull"
