@@ -20,3 +20,26 @@ jobs:
         password: "Singh@1989raj"
         script: |
          powershell.exe -Command "cd C:\inetpub\application1; git checkout dev; git branch origin dev; git pull"
+
+name: Deploy to prod Server
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy to Staging
+      uses: appleboy/ssh-action@master
+      with:
+        host: 103.171.45.79
+        username: cltadmin
+        password: "Singh@1989raj"
+        script: |
+         powershell.exe -Command "cd C:\inetpub\application1; git checkout master; git branch origin master; git pull"
