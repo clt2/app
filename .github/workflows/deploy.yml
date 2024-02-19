@@ -1,4 +1,4 @@
-name: Deploy to Staging Server
+name: Deploy to server
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy to Staging
+    - name: Deploy to Dev
       uses: appleboy/ssh-action@master
       with:
         host: 103.171.45.77
@@ -20,8 +20,6 @@ jobs:
         password: "Singh@1989raj"
         script: |
          powershell.exe -Command "cd C:\inetpub\application1; git checkout dev; git branch origin dev; git pull"
-
-name: Deploy to prod Server
 
 on:
   push:
@@ -35,7 +33,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Deploy to Staging
+    - name: Deploy to ProdServer
       uses: appleboy/ssh-action@master
       with:
         host: 103.171.45.79
