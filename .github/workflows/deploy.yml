@@ -19,4 +19,4 @@ jobs:
         username: cltadmin
         password: "Singh@1989raj"
         script: |
-         powershell.exe -Command "cd C:\inetpub\application1; git checkout dev; git branch origin dev; git pull"
+         powershell.exe -Command "cd C:\inetpub\application1\app\; git checkout dev; git branch origin dev; git pull"
